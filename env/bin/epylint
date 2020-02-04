@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' "/mnt/943C22463C222428/Users/Kwame Yeboah/Documents/Projects and Problems/runClass/env/bin/python3.6" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from pylint import run_epylint
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(run_epylint())

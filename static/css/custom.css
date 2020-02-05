@@ -1,0 +1,69 @@
+/* Navigation Area */
+body{
+    background-color: rgb(61, 61, 196);
+    height: 100vh;
+}
+
+/* .home-page{
+    background-color: rgb(61, 61, 196);
+    height: 100vh;
+} */
+
+.main-one{  
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.sub-one{
+    width: 150px;  
+    height: 5vh;  
+    background-color: #8cacea;  
+    margin: 5px;
+    border-radius: 5px 5px;
+}
+
+/* Body Section */
+.main-two{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.sub-two{
+    width: 95%;
+    /* height: 90vh; */
+    background-color: #8cacea;
+    border-radius: 5px 5px;
+    margin-top: 1.0vh;
+    /* Sub Boxes */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sub-two-one{
+    width: 45%;  
+    height: 35vh;  
+    /* background-color: rgb(61, 61, 196);   */
+    margin: 5px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border: dashed rgb(61, 61, 196) 1.5px;
+    border-radius: 5px 5px;
+}
+
+.sub-two-two{
+    width: 90%;  
+    height: 7.5vh;  
+    /* background-color: rgb(61, 61, 196);   */
+    margin: 5px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border: dashed rgb(61, 61, 196) 1.5px;
+    border-radius: 5px 5px;
+
+}

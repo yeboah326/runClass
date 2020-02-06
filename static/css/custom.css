@@ -19,7 +19,10 @@ body{
     font-size: 1.25em;
 }
 
-
+.submit-session{
+    width: 100%;
+    height: 100%;
+}
 
 /* General CSS Shit */
 
@@ -73,6 +76,28 @@ body{
     justify-content: space-around;
     align-items: center;
 }
+
+.main-bottom{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.sub-bottom{
+    width: 50%;
+    /* height: 90vh; */
+    background-color: #8cacea;
+    border-radius: 5px 5px;
+    margin-top: 1.0vh;
+    /* Sub Boxes */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
 
 .sub-two-one{
     width: 45%;  

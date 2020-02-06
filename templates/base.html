@@ -13,7 +13,16 @@
     <title>{% block title %} {% endblock%}</title>
 </head>
 <body>
-    
+    <div class="main-one ">
+
+        <div class="sub-one shadow-lg c-text-center">
+            <span class="thin">run</span>
+            <span class="thick">Class</span>
+        </div>
+        <div class="sub-one shadow-lg c-text-center">
+            <span class="thick">{{ today }}</span>
+        </div>
+    </div>    
     {% block body%} {% endblock %}
 
     <!-- Bootstrap Javascript CDN -->

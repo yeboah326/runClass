@@ -10,7 +10,7 @@ today = str(date.today())
 @app.route('/')
 
 def index():
-    return render_template("index.html", today = today)
+    return render_template("list2.html", today = today)
 
 
 if __name__ == "__main__":

@@ -9,12 +9,14 @@ body{
     font-weight: 300;
     color: white;
     padding: 0;
+    font-size: 1.25em;
 }
 
 .thick{
     font-weight: 600;
     color: white;
     padding: 0;
+    font-size: 1.25em;
 }
 
 
@@ -30,7 +32,8 @@ body{
     height: 100vh;
 } */
 
-.main-one{  
+.main-one{
+    margin-top: 2.5vh;  
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
@@ -43,7 +46,10 @@ body{
     margin: 5px;
     border-radius: 5px 5px;
     padding: 5px;
-    /* display: flex; */
+    /* Sub */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Body Section */
@@ -110,7 +116,32 @@ body{
     margin-bottom: 5%;
     border: dashed rgb(61, 61, 196) 1.5px;
     border-radius: 5px 5px;
+    /* Sub */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+/* List One Modifications */
+.programme-one{
+    color: rgb(61, 61, 196);
+    font-size: 1.05em;
+    font-weight: 600;
+    margin: 5px;
+}
+
+.year-one{
+    color: white;
+    font-size: 1.05em;
+    font-weight: 600;
+    margin: 5px;
+    background-color: rgb(61, 61, 196);
+    padding: 4px;
+    border-radius: 7.5px;
+}
+
+/* List One Modifications */
+
 
 .main-mid{
     display: flex;
@@ -121,7 +152,7 @@ body{
 }
 
 .sub-two-mid{
-    width: 80%;
+    width: 90%;
     /* height: 90vh; */
     background-color: #8cacea;
     border-radius: 5px 5px;

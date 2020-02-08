@@ -7,40 +7,21 @@
 <!-- Body Sections -->
 <div class="main-two">
     <div class="sub-two shadow-lg">
+        {% for value in classes.values() %}
         <div class="sub-two-two">
-            <div class="programme-one">
-                <span>
-                    Computer Engineering
-                </span>
-            </div>
-            <div class="year-one">
-                Year Two
-            </div>
+                <div class="programme-one">
+                    <span>
+                        {{ value['name'] }}
+                    </span>
+                </div>            
+            <a href="/listStudentsRandom">
+
+                <div class="year-one">
+                    {{ value['year'] }}
+                </div>
+            </a>
         </div>
-        <div class="sub-two-two">
-            <div class="programme-one">
-                <span>
-                    Computer Engineering
-                </span>
-            </div>
-            <div class="year-one">
-                Year Two
-            </div>
-        </div>
-        <div class="sub-two-two">
-            <div class="programme-one">
-                <span>
-                    Computer Engineering
-                </span>
-            </div>
-            <div class="year-one">
-                Year Two
-            </div>
-        </div>
-        <div class="sub-two-two"></div>
-        <div class="sub-two-two"></div>
-        <div class="sub-two-two"></div>
-        <div class="sub-two-two"></div>
+        {% endfor %}
         <div class="sub-two-two"></div>
         <div class="sub-two-two"></div>
         <div class="sub-two-two"></div>

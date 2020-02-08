@@ -9,5 +9,5 @@ def convertExcelToDataframe(xlsxFileDirectory: str):
     xlsx_file = pd.ExcelFile(xlsxFileDirectory)
     return xlsx_file.parse(xlsx_file.sheet_names[0])
 
-df = convertExcelToDataframe("../ClassList.xlsx")
+df = convertExcelToDataframe("../classesDatabases/Computer_Engineering_Year1.xlsx")
 print(df.loc[m ,['STUDENT NAME','INDEX NO.']])    

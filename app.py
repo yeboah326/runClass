@@ -4,6 +4,14 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date
 
+# -------------Custom-Imports-------------------
+
+from classesDatabases import findClass
+classNames = findClass.findClassNames('./classesDatabases')
+print(classNames)
+
+# -------------Custom-Imports-------------------
+
 
 app = Flask(__name__)
 # ------------------Database Configurations----------------------
@@ -30,11 +38,11 @@ def index():
 
 @app.route('/listClassesSession')
 def listClassesSession():
-    return render_template("listClassesSession.html", today=today)
+    return render_template("listClassesSession.html", today=today, classes=classNames)
 
 @app.route('/listClassesRecords')
 def listClassesRecords():
-    return render_template("listClassesRecords.html", today=today)
+    return render_template("listClassesRecords.html", today=today, classes=classNames)
 
 
 @app.route('/records')

@@ -7,46 +7,22 @@
 <!-- Body Sections -->
 <div class="main-two">
     <div class="sub-two shadow-lg">
+        {% for value in classes.values() %}
         <div class="sub-two-two">
-            <a href="/listStudentsRandom">
                 <div class="programme-one">
                     <span>
-                        Computer Engineering
+                        {{ value['name'] }}
                     </span>
                 </div>            
-            </a>
-            <a href="/listStudentsRandom">
+            <a href="/listStudentsRandom" id="{{ value['name'][:5] }}-{{ value['year'] }}">
 
-                <div class="year-one">
-                    Year Two
+                <div class="year-one" onclick="alert('Hello')";>
+                    {{ value['year'] }}
                 </div>
             </a>
         </div>
-        <div class="sub-two-two">
-            <div class="programme-one">
-                <span>
-                    Computer Engineering
-                </span>
-            </div>
-            <div class="year-one">
-                Year Two
-            </div>
-        </div>
-        <div class="sub-two-two">
-            <div class="programme-one">
-                <span>
-                    Computer Engineering
-                </span>
-            </div>
-            <div class="year-one">
-                Year Two
-            </div>
-        </div>
-        <div class="sub-two-two"></div>
-        <div class="sub-two-two"></div>
-        <div class="sub-two-two"></div>
-        <div class="sub-two-two"></div>
-        <div class="sub-two-two"></div>
+        {% endfor %}
+
         <div class="sub-two-two"></div>
         <div class="sub-two-two"></div>
         <div class="sub-two-two"></div>

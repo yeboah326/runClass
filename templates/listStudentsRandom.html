@@ -22,15 +22,22 @@
 </div>
 <!-- Body Sections -->
 <div class="main-two">
-    <div class="sub-two shadow-lg">
-        <div class="sub-two-two">
-            <div class="box-1">
 
+    <div class="sub-two-mid shadow-lg">
+        {% for classValue in currentClass.values() %}
+        <div class="sub-two-two">
+            <div class="programme-one">
+                <span>
+                    {{ classValue }}
+                </span>
             </div>
-            <div class="box-1"></div>
-            <div class="box-1"></div>
+            <div class="year-one">
+                Year Two
+            </div>
         </div>
+        {% endfor %}
     </div>
+
 </div>
 
 <div class="main-bottom">

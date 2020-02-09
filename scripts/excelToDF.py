@@ -1,13 +1,22 @@
 import pandas as pd
-from randomNumberGenerator import generateRandom as gr
-# from scripts import randomNumberGenerator as rng
+from scripts import randomNumberGenerator as rng
+# import randomNumberGenerator as rng
 
-m = gr(15, 30)
-print(m)
+m = rng.generateRandom(15, 30)
+# print(m)
 
 def convertExcelToDataframe(xlsxFileDirectory: str):
     xlsx_file = pd.ExcelFile(xlsxFileDirectory)
-    return xlsx_file.parse(xlsx_file.sheet_names[0])
+    df = xlsx_file.parse(xlsx_file.sheet_names[0])
+    temp = df.loc[m ,['STUDENT NAME']]
+    newDict = temp.to_dict()
+    for i in newDict.values():
+        return i
+    # return newDict.values()
+    # return xlsx_file.parse(xlsx_file.sheet_names[0])
 
-df = convertExcelToDataframe("../classesDatabases/Computer_Engineering_Year1.xlsx")
-print(df.loc[m ,['STUDENT NAME','INDEX NO.']])    
+# ndf = convertExcelToDataframe("../classesDatabases/Computer_Engineering_Year1.xlsx")
+# print(ndf)
+# for i in ndf.values():
+#     print(i)
+# print(df.loc[m ,['STUDENT NAME']])    

@@ -14,7 +14,7 @@
                     {{ value['name'] }}
                 </span>
             </div>
-            <a href="/listStudentsRandom" id="{{ value['name'] }}{{ value['year'] }}" onclick="myFunction(this.id)">
+            <a href="/random{{ value['name'][:8] }}{{ value['year'] }}" onclick="myFunction(this.id)">
 
                 <div class="year-one">
                     {{ value['year'] }}

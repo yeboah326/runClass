@@ -8,8 +8,8 @@ from datetime import date
 
 from classesDatabases import findClass
 classNames = findClass.findClassNames('./classesDatabases')
-print(classNames)
 
+from scripts import excelToDF
 # -------------Custom-Imports-------------------
 
 
@@ -39,6 +39,25 @@ def index():
 @app.route('/listClassesSession', methods=['POST', 'GET'])
 def listClassesSession():
     return render_template("listClassesSession.html", today=today, classes=classNames)
+
+# ------------------Random-Students--------------------------
+@app.route('/randomComputerYear1', methods=['POST', 'GET'])
+def listClassesSession1():
+    return render_template("listStudentsRandom.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year1.xlsx"))
+
+@app.route('/randomComputerYear2', methods=['POST', 'GET'])
+def listClassesSession2():
+    return render_template("listStudentsRandom.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year2.xlsx"))
+
+@app.route('/randomComputerYear3', methods=['POST', 'GET'])
+def listClassesSession3():
+    return render_template("listStudentsRandom.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year3.xlsx"))
+
+@app.route('/randomComputerYear4', methods=['POST', 'GET'])
+def listClassesSession4():
+    return render_template("listClassesSession.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year4.xlsx"))
+# ------------------Random-Students--------------------------
+
 
 @app.route('/listClassesRecords', methods=['POST', 'GET'])
 def listClassesRecords():

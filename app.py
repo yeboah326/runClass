@@ -36,11 +36,11 @@ def index():
     return render_template("index.html", today = today)
 
 
-@app.route('/listClassesSession')
+@app.route('/listClassesSession', methods=['POST', 'GET'])
 def listClassesSession():
     return render_template("listClassesSession.html", today=today, classes=classNames)
 
-@app.route('/listClassesRecords')
+@app.route('/listClassesRecords', methods=['POST', 'GET'])
 def listClassesRecords():
     return render_template("listClassesRecords.html", today=today, classes=classNames)
 
@@ -51,7 +51,7 @@ def records():
 
 @app.route('/listStudentsRandom')
 def listStudentsRandom():
-    return render_template('listStudentsRandom.html', today=today)
+    return render_template('listStudentsRandom.html', today=today, classes=classNames)
 
 @app.route('/complete')
 def complete():

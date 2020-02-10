@@ -43,19 +43,19 @@ def listClassesSession():
 # ------------------Random-Students--------------------------
 @app.route('/randomComputerYear1', methods=['POST', 'GET'])
 def listClassesSession1():
-    return render_template("listStudentsRandom.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year1.xlsx"))
+    return render_template("listStudentsRandom.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year1.xlsx"), year="Year1")
 
 @app.route('/randomComputerYear2', methods=['POST', 'GET'])
 def listClassesSession2():
-    return render_template("listStudentsRandom.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year2.xlsx"))
+    return render_template("listStudentsRandom.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year2.xlsx"), year="Year2")
 
 @app.route('/randomComputerYear3', methods=['POST', 'GET'])
 def listClassesSession3():
-    return render_template("listStudentsRandom.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year3.xlsx"))
+    return render_template("listStudentsRandom.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year3.xlsx"), year="Year3")
 
 @app.route('/randomComputerYear4', methods=['POST', 'GET'])
 def listClassesSession4():
-    return render_template("listClassesSession.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year4.xlsx"))
+    return render_template("listClassesSession.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year4.xlsx"), year="Year4")
 # ------------------Random-Students--------------------------
 
 

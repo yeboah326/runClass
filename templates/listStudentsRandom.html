@@ -13,7 +13,7 @@
                 </span>
             </div>
             <div class="year-one">
-                Year Two
+                {{ year }}
             </div>
         </div>
     </div>
@@ -24,15 +24,15 @@
 <div class="main-two">
 
     <div class="sub-two-mid shadow-lg">
-        {% for classValue in currentClass.values() %}
+        {% for key, Value in currentClass.items() %}
         <div class="sub-two-two">
             <div class="programme-one">
                 <span>
-                    {{ classValue }}
+                    {{ Value }}
                 </span>
             </div>
             <div class="year-one">
-                Year Two
+                <input type="checkbox" id="checkbox-{{ key }}" class="regular-checkbox">
             </div>
         </div>
         {% endfor %}

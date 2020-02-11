@@ -8,19 +8,24 @@ m = rng.generateRandom(15, 30)
 def convertExcelToDataframe(xlsxFileDirectory: str):
     xlsx_file = pd.ExcelFile(xlsxFileDirectory)
     df = xlsx_file.parse(xlsx_file.sheet_names[0])
-    temp = df.loc[m ,['STUDENT NAME']]
+    return df
+def randomStdList(df, random):
+    temp = df.loc[random ,['STUDENT NAME']]
     newDict = temp.to_dict()
     for i in newDict.values():
         return i
     # return newDict.values()
     # return xlsx_file.parse(xlsx_file.sheet_names[0])
+
+
+
 def returnIndex(classDict):
     unfortunatePeople = []
     for key,value in classDict.items():
         unfortunatePeople.append(key)
     return unfortunatePeople
 # ndf = convertExcelToDataframe("../classesDatabases/Computer_Engineering_Year1.xlsx")
-# print(ndf)
+# print(len(ndf))
 # for i in ndf.values():
 #     print(i)
 # print(df.loc[m ,['STUDENT NAME']])    

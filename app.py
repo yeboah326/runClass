@@ -10,6 +10,7 @@ from classesDatabases import findClass
 classNames = findClass.findClassNames('./classesDatabases')
 
 from scripts import excelToDF
+from scripts import randomNumberGenerator as rng
 # -------------Custom-Imports-------------------
 
 
@@ -44,40 +45,48 @@ def listClassesSession():
 @app.route('/randomComputerYear1', methods=['POST', 'GET'])
 def listClassesSession1():
     currentClass = excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year1.xlsx")
+    random = rng.generateRandom(15, len(currentClass))
+    randomStudentList = excelToDF.randomStdList(currentClass, random)
     return render_template(
         "listStudentsRandom.html", 
         today=today, 
-        currentClass=currentClass, 
+        currentClass=randomStudentList, 
         year="Year1",
         selectedStudents=excelToDF.returnIndex(currentClass))
 
 @app.route('/randomComputerYear2', methods=['POST', 'GET'])
 def listClassesSession2():
     currentClass = excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year2.xlsx")
+    random = rng.generateRandom(15, len(currentClass))
+    randomStudentList = excelToDF.randomStdList(currentClass, random)
     return render_template(
         "listStudentsRandom.html", 
         today=today, 
-        currentClass=currentClass, 
+        currentClass=randomStudentList, 
         year="Year2",
         selectedStudents=excelToDF.returnIndex(currentClass))
 
 @app.route('/randomComputerYear3', methods=['POST', 'GET'])
 def listClassesSession3():
     currentClass = excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year3.xlsx") 
+    random = rng.generateRandom(15, len(currentClass))
+    randomStudentList = excelToDF.randomStdList(currentClass, random)
     return render_template(
         "listStudentsRandom.html", 
         today=today, 
-        currentClass=currentClass, 
+        currentClass=randomStudentList, 
         year="Year3",
         selectedStudents=excelToDF.returnIndex(currentClass))
 
 @app.route('/randomComputerYear4', methods=['POST', 'GET'])
 def listClassesSession4():
     currentClass = excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year4.xlsx")
+    random = rng.generateRandom(15, len(currentClass))
+    randomStudentList = excelToDF.randomStdList(currentClass, random)
     return render_template(
-        "listClassesSession.html", 
+        "listStudentsRandom.html", 
         today=today, 
-        currentClass=currentClass, 
+        currentClass=randomStudentList, 
         year="Year4",
         selectedStudents=excelToDF.returnIndex(currentClass))
 # ------------------Random-Students--------------------------
@@ -103,9 +112,9 @@ def complete():
         presentStudents = request.form.getlist("student")
         presentStudents = list(map(lambda x: int(x), presentStudents))
         print(presentStudents)
-        return "Hello"
+        return render_template('complete.html', today=today)
     else:
-        render_template('complete.html' , today=today)
+        return render_template('index.html' , today=today)
         
 # ----------------------Complete-Page-Route-----------------------------
 

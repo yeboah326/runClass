@@ -205,3 +205,18 @@ body{
 /* Custom Checkbox */
 
 /* Custom Checkbox */
+
+/* Complete Page Style */
+.complete-box{
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    width: auto;
+}
+
+/* Complete Page Style */

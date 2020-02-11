@@ -14,7 +14,11 @@ def convertExcelToDataframe(xlsxFileDirectory: str):
         return i
     # return newDict.values()
     # return xlsx_file.parse(xlsx_file.sheet_names[0])
-
+def returnIndex(classDict):
+    unfortunatePeople = []
+    for key,value in classDict.items():
+        unfortunatePeople.append(key)
+    return unfortunatePeople
 # ndf = convertExcelToDataframe("../classesDatabases/Computer_Engineering_Year1.xlsx")
 # print(ndf)
 # for i in ndf.values():

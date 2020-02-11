@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date
 
@@ -43,19 +43,43 @@ def listClassesSession():
 # ------------------Random-Students--------------------------
 @app.route('/randomComputerYear1', methods=['POST', 'GET'])
 def listClassesSession1():
-    return render_template("listStudentsRandom.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year1.xlsx"), year="Year1")
+    currentClass = excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year1.xlsx")
+    return render_template(
+        "listStudentsRandom.html", 
+        today=today, 
+        currentClass=currentClass, 
+        year="Year1",
+        selectedStudents=excelToDF.returnIndex(currentClass))
 
 @app.route('/randomComputerYear2', methods=['POST', 'GET'])
 def listClassesSession2():
-    return render_template("listStudentsRandom.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year2.xlsx"), year="Year2")
+    currentClass = excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year2.xlsx")
+    return render_template(
+        "listStudentsRandom.html", 
+        today=today, 
+        currentClass=currentClass, 
+        year="Year2",
+        selectedStudents=excelToDF.returnIndex(currentClass))
 
 @app.route('/randomComputerYear3', methods=['POST', 'GET'])
 def listClassesSession3():
-    return render_template("listStudentsRandom.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year3.xlsx"), year="Year3")
+    currentClass = excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year3.xlsx") 
+    return render_template(
+        "listStudentsRandom.html", 
+        today=today, 
+        currentClass=currentClass, 
+        year="Year3",
+        selectedStudents=excelToDF.returnIndex(currentClass))
 
 @app.route('/randomComputerYear4', methods=['POST', 'GET'])
 def listClassesSession4():
-    return render_template("listClassesSession.html", today=today, currentClass=excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year4.xlsx"), year="Year4")
+    currentClass = excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year4.xlsx")
+    return render_template(
+        "listClassesSession.html", 
+        today=today, 
+        currentClass=currentClass, 
+        year="Year4",
+        selectedStudents=excelToDF.returnIndex(currentClass))
 # ------------------Random-Students--------------------------
 
 
@@ -72,9 +96,18 @@ def records():
 def listStudentsRandom():
     return render_template('listStudentsRandom.html', today=today, classes=classNames)
 
-@app.route('/complete')
+# ----------------------Complete-Page-Route-----------------------------
+@app.route('/complete', methods=['POST', 'GET'])
 def complete():
-    render_template('complete.html' , today=today)
+    if request.method == 'POST':
+        presentStudents = request.form.getlist("student")
+        presentStudents = list(map(lambda x: int(x), presentStudents))
+        print(presentStudents)
+        return "Hello"
+    else:
+        render_template('complete.html' , today=today)
+        
+# ----------------------Complete-Page-Route-----------------------------
 
 
 if __name__ == "__main__":

@@ -24,6 +24,7 @@
 <div class="main-two">
 
     <div class="sub-two-mid shadow-lg">
+        <form method="POST" action="/complete">
         {% for key, Value in currentClass.items() %}
         <div class="sub-two-two">
             <div class="programme-one">
@@ -32,10 +33,11 @@
                 </span>
             </div>
             <div class="year-one">
-                <input type="checkbox" id="checkbox-{{ key }}" class="regular-checkbox">
+                    <input type="checkbox" value="{{ key }}" name="student" class="regular-checkbox">
+                    <label for="{{ key }}"></label>
+                </div>
             </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
     </div>
 
 </div>
@@ -43,14 +45,11 @@
 <div class="main-bottom">
     <div class="sub-bottom shadow-lg">
         <div class="sub-two-two">
-            <div class="box-1">
-                <form action="post" action="/complete">
                     <input type="submit" value="Submit" class="submit-session">
                 </form>
             </div>
         </div>
     </div>
 
-</div>
 
 {% endblock%}

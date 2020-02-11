@@ -2,10 +2,10 @@
 
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from datetime import date
 
 # -------------Custom-Imports-------------------
 
+from datetime import date
 from classesDatabases import findClass
 classNames = findClass.findClassNames('./classesDatabases')
 
@@ -13,6 +13,14 @@ from scripts import excelToDF
 from scripts import randomNumberGenerator as rng
 # -------------Custom-Imports-------------------
 
+# -------------Custom-Variables-----------------
+computerFirstYearRecord = 0
+computerSecondYearRecord = 0
+computerThirdYearRecord = 0
+computerFourthYearRecord = 0
+
+currentYear = ""
+# -------------Custom-Variables-----------------
 
 app = Flask(__name__)
 # ------------------Database Configurations----------------------
@@ -44,9 +52,14 @@ def listClassesSession():
 # ------------------Random-Students--------------------------
 @app.route('/randomComputerYear1', methods=['POST', 'GET'])
 def listClassesSession1():
+    global computerFirstYearRecord
+    global currentYear
+
     currentClass = excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year1.xlsx")
     random = rng.generateRandom(15, len(currentClass))
+    computerFirstYearRecord = excelToDF.returnRandomStdDF(currentClass, random)
     randomStudentList = excelToDF.randomStdList(currentClass, random)
+    currentYear="Year1"
     return render_template(
         "listStudentsRandom.html", 
         today=today, 
@@ -56,9 +69,14 @@ def listClassesSession1():
 
 @app.route('/randomComputerYear2', methods=['POST', 'GET'])
 def listClassesSession2():
+    global computerSecondYearRecord
+    global currentYear
+
     currentClass = excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year2.xlsx")
     random = rng.generateRandom(15, len(currentClass))
+    computerSecondYearRecord = excelToDF.returnRandomStdDF(currentClass, random)
     randomStudentList = excelToDF.randomStdList(currentClass, random)
+    currentYear = "Year2"
     return render_template(
         "listStudentsRandom.html", 
         today=today, 
@@ -68,9 +86,14 @@ def listClassesSession2():
 
 @app.route('/randomComputerYear3', methods=['POST', 'GET'])
 def listClassesSession3():
+    global computerThirdYearRecord
+    global currentYear
+
     currentClass = excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year3.xlsx") 
     random = rng.generateRandom(15, len(currentClass))
+    computerThirdYearRecord = excelToDF.returnRandomStdDF(currentClass, random)
     randomStudentList = excelToDF.randomStdList(currentClass, random)
+    currentYear ="Year3"
     return render_template(
         "listStudentsRandom.html", 
         today=today, 
@@ -80,9 +103,14 @@ def listClassesSession3():
 
 @app.route('/randomComputerYear4', methods=['POST', 'GET'])
 def listClassesSession4():
+    global computerFourthYearRecord
+    global currentYear
+
     currentClass = excelToDF.convertExcelToDataframe("./classesDatabases/Computer_Engineering_Year4.xlsx")
     random = rng.generateRandom(15, len(currentClass))
+    computerFourthYearRecord = excelToDF.returnRandomStdDF(currentClass, random)
     randomStudentList = excelToDF.randomStdList(currentClass, random)
+    currentYear = "Year4"
     return render_template(
         "listStudentsRandom.html", 
         today=today, 
@@ -108,10 +136,22 @@ def listStudentsRandom():
 # ----------------------Complete-Page-Route-----------------------------
 @app.route('/complete', methods=['POST', 'GET'])
 def complete():
+    
     if request.method == 'POST':
         presentStudents = request.form.getlist("student")
         presentStudents = list(map(lambda x: int(x), presentStudents))
-        print(presentStudents)
+        if currentYear == 'Year1':
+            excelToDF.markStudents(computerFirstYearRecord, presentStudents)
+        elif currentYear == 'Year2':
+            excelToDF.markStudents(computerSecondYearRecord, presentStudents)
+        elif currentYear == 'Year3':
+            excelToDF.markStudents(computerThirdYearRecord, presentStudents)
+        elif currentYear == 'Year4':
+            excelToDF.markStudents(computerFourthYearRecord, presentStudents)
+    
+        # print(currentYear)
+        # print(presentStudents)
+        print(computerSecondYearRecord)
         return render_template('complete.html', today=today)
     else:
         return render_template('index.html' , today=today)

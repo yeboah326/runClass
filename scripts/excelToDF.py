@@ -82,6 +82,17 @@ def markStudents(dataframe, presentStudents):
     for i in presentStudents:
         dataframe.loc[[i], ['PRESENT STATE']] = 1
 
+
+def convertDFToExcel2(filename, dataframe):
+    '''
+    filename(str) - name of the excel spreadsheet to be created
+
+    dataframe - pandas dataframe to be converted to an excel spreadsheet
+    '''
+    writer = pd.ExcelWriter(filename)
+    dataframe.to_excel(writer, 'attendance')
+    writer.save()
+
 # ndf = convertExcelToDataframe("../classesDatabases/Computer_Engineering_Year1.xlsx")
 # print(ndf)
 # for i in ndf:

@@ -5,6 +5,12 @@ import re
 
 
 def findClassNames(destinationDirectory):
+    '''
+    destinationDirectory - name of the directory that contains the records of the students
+
+    findClassNames() - takes the directory as input and returns a dictionary of
+    of all files ending in '.xlsx' 
+    '''
     files = [f for f in os.listdir(destinationDirectory) if str(f).endswith('xlsx')]
     classes = []
     classDict = {}

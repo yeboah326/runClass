@@ -5,12 +5,12 @@ from flask_sqlalchemy import SQLAlchemy
 
 # -------------Custom-Imports-------------------
 
-from datetime import date
-from classesDatabases import findClass
-classNames = findClass.findClassNames('./classesDatabases')
+from datetime import date, datetime
 
-from scripts import excelToDF
+from scripts import excelToDF, moveClass, findClass
 from scripts import randomNumberGenerator as rng
+
+classNames = findClass.findClassNames('./classesDatabases')
 # -------------Custom-Imports-------------------
 
 # -------------Custom-Variables-----------------
@@ -142,16 +142,24 @@ def complete():
         presentStudents = list(map(lambda x: int(x), presentStudents))
         if currentYear == 'Year1':
             excelToDF.markStudents(computerFirstYearRecord, presentStudents)
+            filename = 'ComputerEngineeringYear1' + '-' + str(today) + '-' + str(datetime.now())[11:16] + '.xlsx'
+            excelToDF.convertDFToExcel2(filename, computerFirstYearRecord)
+            moveClass.moveClass(filename)
         elif currentYear == 'Year2':
             excelToDF.markStudents(computerSecondYearRecord, presentStudents)
+            filename = 'ComputerEngineeringYear2' + '-' + str(today) + '-' + str(datetime.now())[11:16] + '.xlsx'
+            excelToDF.convertDFToExcel2(filename, computerSecondYearRecord)
+            moveClass.moveClass(filename)
         elif currentYear == 'Year3':
             excelToDF.markStudents(computerThirdYearRecord, presentStudents)
+            filename = 'ComputerEngineeringYear3' + '-' + str(today) + '-' + str(datetime.now())[11:16] + '.xlsx'
+            excelToDF.convertDFToExcel2(filename, computerThirdYearRecord)
+            moveClass.moveClass(filename)
         elif currentYear == 'Year4':
             excelToDF.markStudents(computerFourthYearRecord, presentStudents)
-    
-        # print(currentYear)
-        # print(presentStudents)
-        print(computerSecondYearRecord)
+            filename = 'ComputerEngineeringYear4' + '-' + str(today) + '-' + str(datetime.now())[11:16] + '.xlsx'
+            excelToDF.convertDFToExcel2(filename, computerFourthYearRecord)
+            moveClass.moveClass(filename)
         return render_template('complete.html', today=today)
     else:
         return render_template('index.html' , today=today)

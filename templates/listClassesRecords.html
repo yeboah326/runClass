@@ -7,19 +7,16 @@
 <!-- Body Sections -->
 <div class="main-two">
     <div class="sub-two shadow-lg">
-        {% for value in classes.values() %}
+        {% for value in records%}
         <div class="sub-two-two">
-                <div class="programme-one">
-                    <span>
-                        {{ value['name'] }}
-                    </span>
+                <div class="programme-one" >
+                        {{ value }}
                 </div>            
-            <a href="/listStudentsRandom">
-
                 <div class="year-one">
-                    {{ value['year'] }}
+                    <a href=" {{ url_for('downloadFileFromServer' , filename=value) }}">
+                        <i class="fas fa-file-download"></i>
+                    </a>
                 </div>
-            </a>
         </div>
         {% endfor %}
         <div class="sub-two-two"></div>

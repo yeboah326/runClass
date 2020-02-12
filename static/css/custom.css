@@ -149,10 +149,12 @@ body{
 
 /* List One Modifications */
 .programme-one{
+    width: 70%;
     color: rgb(61, 61, 196);
     font-size: 1.05em;
     font-weight: 600;
     margin: 5px;
+    word-wrap: break-word;
 }
 
 .year-one{
@@ -220,3 +222,12 @@ form{
 }
 
 /* Complete Page Style */
+
+/* Records Page */
+
+.break{
+    word-wrap: break-word;
+}
+
+/* Records Page */
+

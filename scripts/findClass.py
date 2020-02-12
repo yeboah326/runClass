@@ -21,5 +21,10 @@ def findClassNames(destinationDirectory):
     
     return classDict
 
+def findRecords(destinationDirectory):
+    files = [f for f in os.listdir(destinationDirectory) if str(f).endswith('xlsx')]
+    return files
+
+
 
 

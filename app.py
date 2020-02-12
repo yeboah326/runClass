@@ -1,13 +1,13 @@
 #! /usr/bin/env python
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory, send_file
 from flask_sqlalchemy import SQLAlchemy
 
 # -------------Custom-Imports-------------------
 
 from datetime import date, datetime
 
-from scripts import excelToDF, moveClass, findClass
+from scripts import excelToDF, moveClass, findClass, downloadFile
 from scripts import randomNumberGenerator as rng
 
 classNames = findClass.findClassNames('./classesDatabases')
@@ -119,15 +119,26 @@ def listClassesSession4():
         selectedStudents=excelToDF.returnIndex(currentClass))
 # ------------------Random-Students--------------------------
 
-
+# ---------------------Records-------------------------------
 @app.route('/listClassesRecords', methods=['POST', 'GET'])
 def listClassesRecords():
-    return render_template("listClassesRecords.html", today=today, classes=classNames)
+    classRecords = findClass.findRecords('./records')
+    return render_template("listClassesRecords.html", today=today, records=classRecords)
 
+@app.route('/download/<string:filename>', methods=['GET', 'POST'])
+def downloadFileFromServer(filename):
+    filename = './records/' + filename
+    # path = './records/ComputerEngineeringYear2-2020-02-12-13:26.xlsx'
+    return send_file( filename, as_attachment=True)
 
-@app.route('/records')
+    # return send_file( path, as_attachment=True)
+# ---------------------Records-------------------------------
+
+@app.route('/recordsPage')
 def records():
     return render_template('records.html', today=today)
+
+
 
 @app.route('/listStudentsRandom')
 def listStudentsRandom():

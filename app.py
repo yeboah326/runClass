@@ -141,7 +141,7 @@ def downloadFileFromServer(filename):
 def removeFileFromServer(filename):
     filename = './records/' + filename
     deleteRecord.deleteFile(filename)
-    return render_template('complete.html', today=today)
+    return render_template('complete.html', today=today )
 # ---------------------Records-------------------------------
 
 @app.route('/recordsPage')

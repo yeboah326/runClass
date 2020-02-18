@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 from datetime import date, datetime
 
-from scripts import excelToDF, moveClass, findClass, downloadFile
+from scripts import excelToDF, moveClass, findClass, downloadFile, deleteRecord
 from scripts import randomNumberGenerator as rng
 
 classNames = findClass.findClassNames('./classesDatabases')
@@ -125,6 +125,11 @@ def listClassesRecords():
     classRecords = findClass.findRecords('./records')
     return render_template("listClassesRecords.html", today=today, records=classRecords)
 
+@app.route('/deleteClassesRecords')
+def deleteClassesRecords():
+    classRecords = findClass.findRecords('./records')
+    return render_template("deleteClassesRecords.html", today=today, records=classRecords)
+
 @app.route('/download/<string:filename>', methods=['GET', 'POST'])
 def downloadFileFromServer(filename):
     filename = './records/' + filename
@@ -132,6 +137,11 @@ def downloadFileFromServer(filename):
     return send_file( filename, as_attachment=True)
 
     # return send_file( path, as_attachment=True)
+@app.route('/<string:filename>',methods=['GET', 'POST'])
+def removeFileFromServer(filename):
+    filename = './records/' + filename
+    deleteRecord.deleteFile(filename)
+    return render_template('complete.html', today=today)
 # ---------------------Records-------------------------------
 
 @app.route('/recordsPage')
